@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TOKEN_CSRF = os.getenv("TOKEN_CSRF")
 if TOKEN_CSRF:
     SECRET_KEY = TOKEN_CSRF
-    CSRF_TRUSTED_ORIGINS =["https://projetowowdjango-production.up.railway.app/"]
+    CSRF_TRUSTED_ORIGINS = ["https://projetowowdjango-production.up.railway.app"]
 else:
     SECRET_KEY = 'django-insecure-z*lnak+-@k^p#y%(mird-k&0fcgiss)m$5-=61io_cwwpuo-nr'
 
