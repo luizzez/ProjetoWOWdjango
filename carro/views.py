@@ -87,7 +87,7 @@ class PaginaPerfil(LoginRequiredMixin, UpdateView):
         return HttpResponseRedirect(own_profile_url)
 
     def get_success_url(self):
-        return reverse('carro:homepageCarro:home_dhytpix')
+        return reverse('carro:homepageCarro')
 
 
 class CriarConta(FormView):

@@ -18,13 +18,6 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
-    # Cria o superusuário se ele ainda não existir
-    User = get_user_model()
-    email = os.getenv("EMAIL_ADMIN")
-    senha = os.getenv("SENHA_ADMIN")
-    if not User.objects.filter(username='admin').exists():
-        User.objects.create_superuser(
-            username='admin', email=email, password=senha, is_active=True, is_staff=True)
 
 
 if __name__ == '__main__':
