@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {% include 'navbar.html' %}
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 imagemDeFundo">
+                    <div class="textoCentralizado">
+                        <div class="divtexto1">
+                            <h1>
+                                W o W
+                            </h1>
+                        </div>
+                        <div class="divtexto2">
+                            <h2>
+                                Encontre Seu Carro
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="col-md-1 "></div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div id="section1" class="col-md-6 col-sm-12" style="background-color: #FD4200FF">
+                        <h2 class="pt-5 ps-5">Sobre Nossa Empresa</h2>
+                        <p class="animate-text mt-1 ps-5" style="font-family: 'Calibri Light',ui-sans-serif">
+                            A WoW Consignação de Carros é uma empresa especializada em ajudar proprietários de veículos
+                            a
+                            vender seus carros de forma rápida e segura. Com uma equipe experiente e dedicada, estamos
+                            comprometidos em oferecer um serviço de qualidade que simplifica o processo de venda de
+                            carros.
+                            Nossa missão é proporcionar uma experiência transparente e sem complicações para nossos
+                            clientes. Desde a avaliação inicial do veículo até a conclusão da venda, estamos aqui para
+                            orientá-lo e garantir que você obtenha o melhor valor para o seu carro.</p>
+
+                    </div>
+                    <div class="col-md-6 col-sm-12 imagemDeFundo2"></div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div id="section2" class="mt-2">
+            <div style="background-color: orangered">
+                <h2 class="text-center">Nossos Carros</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for carro in object_list %}
+                <div class="col-md-2">
+                    <div class="card mt-2" style="background-color: orangered">
+                        <img src="{{ carro.imagemCarro.url }}" class="card-img-top" alt="...">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ carro.nome }}</h5>
+                            <a href="{% url 'carro:detalhesCarro' carro.pk %}" class="btn"
+                               style="background-color: black"><h5 style="color: orangered">Detalhes</h5></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="mt-5">
+            <div style="background-color: orangered">
+                <h2 class="text-center">Mais Acessados</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for carro in lista_mais_acessados %}
+                <div class="col-md-4 col-sm-12">
+                    <div class="card mt-2" style="background-color: orangered">
+                        <img src="{{ carro.imagemCarro.url }}" class="card-img-top" alt="...">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ carro.nome }}</h5>
+                            <a href="{% url 'carro:detalhesCarro' carro.pk %}" class="btn"
+                               style="background-color: black"><h5 style="color: orangered">Detalhes</h5></a>
+                            <div class=" row ">
+                                <div id="section3" class="col-12">
+                                    <span class="mdi mdi-monitor-eye"></span>
+                                    <h5 style="color: black">Número de Acessos: {{ carro.curtidas }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% include 'footer.html' %}
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        // Adiciona um evento de clique a todos os links com a classe 'nav-link'
+        $('.nav-link').on('click', function(event) {
+            // Previne o comportamento padrão do link
+            event.preventDefault();
+            
+            // Obtém o ID da seção para a qual o link está apontando
+            var target = $(this).attr('href');
+            
+            // Calcula a posição vertical da seção alvo
+            var offset = $(target).offset().top;
+            
+            // Anima a rolagem suave até a posição da seção alvo
+            $('html, body').animate({
+                scrollTop: offset
+            }, 800); // Tempo da animação em milissegundos (800 ms = 0.8 segundos)
+        });
+    });
+</script>
+
+{% endblock %}

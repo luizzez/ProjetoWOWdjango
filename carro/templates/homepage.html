@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}
+    WoW | Login
+{% endblock %}
+
+{% block content %}
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 divpreta imagemLogin">
+                <div>
+                    <img src="{% static 'images/WoW_mundoGirar.png' %}" alt="">
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 divlaranja textoLogin">
+                <div>
+                    <h3>
+                        Bem Vindo
+                    </h3>
+                    <h2 style="color: black">
+                        Junte-se a nós na WoW e descubra como podemos ajudá-lo a fazer o mundo girar, uma transação de
+                        cada vez.  Venha fazer parte, coloque seu e-mail abaixo para acessar
+                    </h2>
+                    <form method="post" class="mt-5">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            {{ form|crispy }}
+                        </div>
+                        <button type="submit" class="btn" style="background-color: #000000"><h5
+                                style="color: orangered">
+                            Acessar</h5></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

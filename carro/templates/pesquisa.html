@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    WoW | Pesquisa
+{% endblock %}
+
+{% block content %}
+    {% include 'navbar.html' %}
+    <div class="container-fluid">
+        <div class="mt-5">
+            <div style="background-color: orangered">
+                <h2 class="text-center">Resultado da Pesquisa</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for carro in object_list %}
+                <div class="col-md-2 sm-12">
+                    <div class="card mt-2" style="background-color: orangered">
+                        <img src="{{ carro.imagemCarro.url }}" class="card-img-top" alt="...">
+                        <div class="card-body text-center" id="section3">
+                            <h5 class="card-title">{{ carro.nome }}</h5>
+                            <a href="{% url 'carro:detalhesCarro' carro.pk %}" class="btn"
+                               style="background-color: black"><h5 style="color: orangered">Detalhes</h5></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% include 'footer.html' %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Adiciona um evento de clique a todos os links com a classe 'nav-link'
+            $('.nav-link').on('click', function (event) {
+                // Previne o comportamento padrão do link
+                event.preventDefault();
+
+                // Obtém o ID da seção para a qual o link está apontando
+                var target = $(this).attr('href');
+
+                // Calcula a posição vertical da seção alvo
+                var offset = $(target).offset().top;
+
+                // Anima a rolagem suave até a posição da seção alvo
+                $('html, body').animate({
+                    scrollTop: offset
+                }, 800); // Tempo da animação em milissegundos (800 ms = 0.8 segundos)
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    WoW | Criar Conta
+{% endblock %}
+{% block content %}
+    {% include 'navbar.html' %}
+    <div class="container-fluid" style="background-color: #ff6b33">
+        <div class="row">
+            <div class="col-12 text-center mt2">
+                <form method="post">
+                    {% csrf_token %}
+                    <fieldset>
+                        <legend>
+                                   Criar Conta Para Continuar
+                        </legend>
+                        {{ form|crispy }}
+                    </fieldset>
+                    <a>
+                        <button class="btn ms-2 mt-2 mb-2" style="background-color: #000000" type="submit" value=""><h5
+                                style="color: #fd4200">Criar Conta</h5></button>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% include 'footer.html' %}
+{% endblock %}

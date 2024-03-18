@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    WoW | Logout
+{% endblock %}
+
+{% block content %}
+
+    {% include 'navbar.html' %}
+    <div class="container-fluid">
+        <div style="background-color: orangered" class="text-center">
+            <h2>Você foi Deslogado</h2>
+        </div>
+        <div class="row">
+            <div class="col-6 text-end">
+                <a href="{% url 'carro:login' %}">
+                    <button class="btn ms-2 mt-2" style="background-color: orangered" type="submit" value=""><h5
+                            style="color: black">Fazer Login</h5></button>
+                </a>
+            </div>
+            <div class="col-6">
+                <a href="{% url 'carro:criarConta' %}">
+                    <button class="btn ms-2 mt-2" style="background-color: orangered" type="submit" value=""><h5
+                            style="color: black">Criar Conta</h5></button>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% include 'footer.html' %}
+{% endblock %}

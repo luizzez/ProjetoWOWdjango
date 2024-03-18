@@ -1,0 +1,41 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg bg-black">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'images/logonova.png' %}">
+        </a>
+        {% if user.is_authenticated %}
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse grow" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+                    <a class="nav-link text-white" href="#section1">Sobre Nós</a>
+                    <a class="nav-link text-white" href="#section2">Serviços</a>
+                    <a class="nav-link text-white" href="#section3">Contato</a>
+                    <a href="{% url 'carro:logout' %}">
+                        <button class="btn ms-2 mt-2" style="background-color: orangered" type="submit" value=""><h5
+                                style="color: black">Sair</h5></button>
+                    </a>
+                    <a href="{% url 'carro:editarperfil' user.pk %}">
+                        <button class="btn ms-2 mt-2" style="background-color: orangered" type="submit" value=""><h5
+                                style="color: black">Editar Perfil</h5></button>
+                    </a>
+                    <form class="d-flex" role="search" method="get" action="{% url 'carro:pesquisacarro' %}">
+                        <input class="form-control ms-2 me-2 mt-2" type="search" placeholder="Pesquisar" aria-label="Search"
+                               name="query">
+                        <button class="btn mt-2" style="background-color: orangered" type="submit" value=""><h5
+                                style="color: black">Pesquisar</h5></button>
+                    </form>
+                </div>
+            </div>
+        {% else %}
+            <a href="{% url 'carro:login' %}">
+                <button class="btn ms-2 mt-2" style="background-color: orangered" type="submit" value=""><h5
+                        style="color: black">Login</h5></button>
+            </a>
+        {% endif %}
+    </div>
+</nav>
