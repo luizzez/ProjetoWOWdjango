@@ -6,7 +6,7 @@
     position: relative;
     height: 500px;
     overflow: hidden;
-    background-image: url('../../static/images/imagemCarroFundo.jpg');
+    background-image: url('..agemCarroFundo.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -15,7 +15,7 @@
     position: relative;
     height: 300px;
     overflow: hidden;
-    background-image: url('../../static/images/carroLaranja.jpg');
+    background-image: url('..rroLaranja.jpg');
     background-size: cover;
     background-position: center;
 }
